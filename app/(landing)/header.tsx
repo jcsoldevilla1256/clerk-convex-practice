@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ChatMaxingIconColoured } from '@/components/logo'
+import { Logo } from '@/components/logo'
 import { Loader2, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -50,8 +50,8 @@ export const HeroHeader = () => {
                                 href="/"
                                 aria-label="home"
                                 className="flex items-center space-x-2">
-                                <ChatMaxingIconColoured />
-                                <span className="text-xl font-medium">Starter.diy</span>
+                                <Logo />
+                                <span className="text-xl font-medium"></span>
                                 <Badge variant="outline" className="text-muted-foreground  text-xs">Demo</Badge>
                             </Link>
 

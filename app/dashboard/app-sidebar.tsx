@@ -35,7 +35,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { ChatMaxingIconColoured } from "@/components/logo"
+import { Logo} from "@/components/logo"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
@@ -99,8 +99,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <Link href="/">
-                <ChatMaxingIconColoured className="!size-6" />
-                <span className="text-base font-semibold">Starter DIY</span>
+                <Logo />
+                {/* <span className="text-base font-semibold">Starter DIY</span> */}
                 <Badge variant="outline" className="text-muted-foreground  text-xs">Demo</Badge>
               </Link>
             </SidebarMenuButton>
