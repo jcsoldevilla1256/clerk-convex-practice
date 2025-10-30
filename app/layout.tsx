@@ -3,10 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-import dynamic from 'next/dynamic'
 import ConvexClientProvider from '@/components/ConvexClientProvider'
-
-const ClientClerkProvider = dynamic(() => import('@/components/ClientClerkProvider'), { ssr: false })
+import ClientProviders from "@/components/ClientProviders"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,11 +37,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ClientClerkProvider>
+          <ClientProviders>
             <ConvexClientProvider>
               {children}
             </ConvexClientProvider>
-          </ClientClerkProvider>
+          </ClientProviders>
         </ThemeProvider>
       </body>
     </html>
