@@ -5,6 +5,11 @@ import { paymentAttemptSchemaValidator } from "./paymentAttemptTypes";
 export default defineSchema({
     users: defineTable({
       name: v.string(),
+      email: v.optional(v.string()), // temporarily optional during migration
+      firstName: v.optional(v.string()),
+      lastName: v.optional(v.string()),
+      imageUrl: v.optional(v.string()),
+      posts:v.optional(v.array(v.id("posts"))),
       // this the Clerk ID, stored in the subject JWT field
       externalId: v.string(),
     }).index("byExternalId", ["externalId"]),
