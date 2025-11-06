@@ -3,15 +3,20 @@ import { DataTable } from "@/app/dashboard/data-table"
 import { SectionCards } from "@/app/dashboard/section-cards"
 
 import data from "./data.json"
+// import AddFeedbackDialog from "./components/AddFeedbackDialog"
+import FeedbackCardDemo from "./components/Feedbackcard"
 
 export default function Page() {
   return (
     <>
-      <SectionCards />
+      {/* <SectionCards />
       <div className="px-4 lg:px-6">
         <ChartAreaInteractive />
       </div>
-      <DataTable data={data} />
+      <DataTable data={data} /> */}
+
+    {/* <AddFeedbackDialog /> */}
+    <FeedbackCardDemo />
     </>
   )
 }

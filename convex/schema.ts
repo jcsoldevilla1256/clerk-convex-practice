@@ -13,7 +13,17 @@ export default defineSchema({
       // this the Clerk ID, stored in the subject JWT field
       externalId: v.string(),
     }).index("byExternalId", ["externalId"]),
-    
+
+    posts: defineTable({
+      title: v.string(),
+      slug:v.string(),
+      exerpt:v.string(),
+      content:v.string(),
+      coverImageId:v.string(),
+      authorId: v.id("users"),
+      likes: v.number(),
+    }).index("bySlug", ["slug"]),
+
     paymentAttempts: defineTable(paymentAttemptSchemaValidator)
       .index("byPaymentId", ["payment_id"])
       .index("byUserId", ["userId"])
