@@ -1,8 +1,10 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {DialogDemo} from './AddFeedbackDialog';
+import {DialogDemo, FeedbackData} from './AddFeedbackDialog';
 
 type FeedbackCardProps = {
   userName: string;
@@ -64,7 +66,7 @@ const FeedbackCard: React.FC<FeedbackCardProps> = ({ userName, userAvatar, ratin
 }
 
 export default function FeedbackCardDemo() {
-      const sampleFeedbacks = [
+      const [feedbacks, setFeedbacks] = useState<FeedbackData[]>([
         {
           userName:"Sarah Johnson",
           userAvatar:"https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
@@ -89,7 +91,13 @@ export default function FeedbackCardDemo() {
           date: "Nov 3, 2025",
           time: "4:45 PM"
         }
-      ]
+      ]);
+
+      // Handler function to add new feedback
+      const handleAddFeedback = (newFeedback: FeedbackData)=>{
+        // Add new feedback to the beginning of the array (most recent first)
+        setFeedbacks((prevFeedbacks)=>[newFeedback, ...prevFeedbacks]);
+      }
 
       return(
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8 ">
@@ -100,13 +108,14 @@ export default function FeedbackCardDemo() {
                 <h1 className='text-3xl font-bold text-gray-900 mb-2'>Feedback Dashboard</h1>
                 <p className='text-gray-800'>See what people are saying</p>
               </div>
-              <DialogDemo/>
+              {/* Pass the onsubmit callback to DialogDemo */}
+              <DialogDemo onSubmit={handleAddFeedback}/>
             </div>
             {/* Cards Here */}
             <div className='space-y-4'>
-              {sampleFeedbacks.map((feedback, index) => (
+              {feedbacks.map((feedback, index) => (
                 <FeedbackCard 
-                  key={index}
+                  key={`${feedback.userName}-${feedback.date}-${feedback.time}-${index}`}
                   userName={feedback.userName}
                   userAvatar={feedback.userAvatar}
                   rating={feedback.rating}
